@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% if user.is_authenticated %}
+<form method="POST" enctype="multipart/form-data">{% csrf_token %}
+<p>名前：{{ user.username }}<input type="hidden" name="author" value="{{ user.username }}"></p>
+<br>
+<textarea name="content" rows="4" cols="40"></textarea>
+<br>
+
+<input type="submit" value="送信">
+<br>
+<a href="{% url 'list' %}" >back</a>
+<br>
+<a href="{% url 'logout' %}" >logout</a>
+</form>
+{% endif %}
+{% endblock content %}
