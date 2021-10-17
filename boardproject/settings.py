@@ -24,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-n_j#32_xq3lhqku-l7s&hmc&kpf@4q%&jv0w&xzx4#^z+rgjav'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['108.61.223.170', 'localhost']
 
 
 # Application definition
@@ -79,11 +79,12 @@ WSGI_APPLICATION = 'boardproject.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        'TEST': {
-            'NAME': os.path.join(BASE_DIR, 'db_test.sqlite3')
-        }
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'boardproject',
+        'USER': 'yulice',
+        'PASSWORD': 'erciyuan520',
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
 
@@ -125,8 +126,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR / 'staticfiles'
-STATICFILES_DIRS = [str(BASE_DIR / 'static')]
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
